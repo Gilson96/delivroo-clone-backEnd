@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Dish;
 use App\Http\Requests\DishRequest;
-use App\Http\Requests\API\RestaurantRequest;
+use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantResource;
 
 class Restaurants extends Controller
@@ -72,7 +72,7 @@ class Restaurants extends Controller
 
    
 
-    public function dishPost(Request $request, Restaurant $restaurant)
+    public function dishPost(DishRequest $request, Restaurant $restaurant)
     {
         
         $dish = new Dish($request->all());

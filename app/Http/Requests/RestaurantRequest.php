@@ -22,6 +22,7 @@ class RestaurantRequest extends FormRequest
             "description" => ["required", "string", "max:100"],
             "longtitude" => ["required", "decimal"],
             "latitude" => ["required", "decimal"],
+            "dishes" => ["required", "array"],
             // "categories" => ["required", "array"],
             // "categories.*" => ["string", "max:30"],
         ];
