@@ -24,7 +24,7 @@ class Restaurants extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RestaurantRequest $request)
     {
         $data = $request->all();
 
@@ -71,7 +71,11 @@ class Restaurants extends Controller
         return response(null, 204);
     }
 
-   
+    public function dishShow()
+    {
+        return DishResource::collection(Dish::all());
+    }
+
 
     public function dishPost(DishRequest $request, Restaurant $restaurant)
     {
@@ -83,17 +87,6 @@ class Restaurants extends Controller
 
         return redirect("/restaurant/{$restaurant->id}");
     }
-
-    public function dishUpdate(DishRequest $request, Restaurant $restaurant)
-    {
-        
-        $data = $request->all();
-        $restaurant->dishes()->update($data);
-
-        return redirect("/restaurant/{$restaurant->id}");
-    }
-
-
 
     public function dishDestroy(Restaurant $restaurant)
     {

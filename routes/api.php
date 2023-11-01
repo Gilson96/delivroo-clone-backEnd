@@ -34,3 +34,9 @@ Route::group(["prefix" => "restaurants"], function () {
         Route::delete("", [Restaurants::class, "destroy"]);
     });
 });
+
+Route::group(["prefix" => "dishes"], function () {
+    Route::get('{restaurant}', "App\Http\Controllers\Restaurants@dishShow");
+    Route::post('{restaurant}', "App\Http\Controllers\Restaurants@dishPost");
+    Route::get('/destroy/{restaurant}', "App\Http\Controllers\Restaurants@dishDestroy");
+});
