@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DishResource;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Dish;
@@ -82,6 +83,17 @@ class Restaurants extends Controller
 
         return redirect("/restaurant/{$restaurant->id}");
     }
+
+    public function dishUpdate(DishRequest $request, Restaurant $restaurant)
+    {
+        
+        $data = $request->all();
+        $restaurant->dishes()->update($data);
+
+        return redirect("/restaurant/{$restaurant->id}");
+    }
+
+
 
     public function dishDestroy(Restaurant $restaurant)
     {
