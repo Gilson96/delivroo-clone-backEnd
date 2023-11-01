@@ -18,7 +18,7 @@ class DishRequest extends FormRequest
         return [
             "title" => ["required", "string", "max:100"],
             "description" => ["required", "string", "max:100"],
-            "price" => ["required", "decimal"],
+            "price" => ["required", "decimal:10,2"],
             "src" => ["required", "string", "max:100"]
         ];
     }
