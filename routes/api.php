@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Restaurants;
+use App\Http\Controllers\API\Dishes;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,9 +36,11 @@ Route::group(["prefix" => "restaurants"], function () {
     });
 });
 
-Route::group(["prefix" => "dishes"], function () {
-    Route::get('{restaurant}', "App\Http\Controllers\Restaurants@dishShow");
-    Route::get('{restaurant}', "App\Http\Controllers\Restaurants@dishStore");
-    Route::post('{restaurant}', "App\Http\Controllers\Restaurants@dishPost");
-    Route::get('/destroy/{restaurant}', "App\Http\Controllers\Restaurants@dishDestroy");
+Route::group(["prefix" => "dishes"], function(){
+    Route::get("", [Dishes::class, "index"]);
+    Route::group(["prefix" => "{dish}"], function(){
+        Route::get("", [Dishes::class, "show"]);
+        Route::put("", [Dishes::class, "update"]);
+        Route::delete("", [Dishes::class, "destroy"]);       
+    });
 });
