@@ -20,7 +20,7 @@ class RestaurantResource extends JsonResource
             "longtitude" => $this->longtitude,
             "latitude" => $this->latitude,
             // "categories" => $this->categories->pluck("name"),
-            "dishes" => $this->dishes
+            "dishes" => $this->dishes->pluck('title'),
         ];
 
     }
