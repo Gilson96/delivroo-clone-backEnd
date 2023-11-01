@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Restaurants;
+use App\Http\Controllers\API\Restaurants\Dishes as RestaurantDishes;
 use App\Http\Controllers\API\Dishes;
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +34,20 @@ Route::group(["prefix" => "restaurants"], function () {
         Route::put("", [Restaurants::class, "update"]);
         // DELETE /Restaurants/8: delete the article
         Route::delete("", [Restaurants::class, "destroy"]);
-    });
-    Route::group(["prefix" => "dishes"], function(){
-        Route::get("", [Dishes::class, "index"]);
-        Route::group(["prefix" => "{dish}"], function(){
-            Route::get("", [Dishes::class, "show"]);
-            Route::put("", [Dishes::class, "update"]);
-            Route::delete("", [Dishes::class, "destroy"]);       
+        Route::group(["prefix" => "dishes"], function(){
+            Route::get("", [RestaurantDishes::class, "index"]);
+            Route::post("", [RestaurantDishes::class, "store"]);  
         });
     });
+   
 });
 
+Route::group(["prefix" => "dishes"], function(){
+    Route::get("", [Dishes::class, "index"]);
+    Route::group(["prefix" => "{dish}"], function(){
+        Route::get("", [Dishes::class, "show"]);
+        Route::get("", [Dishes::class,"store"]);
+        Route::put("", [Dishes::class, "update"]);
+        Route::delete("", [Dishes::class, "destroy"]);       
+    });
+});

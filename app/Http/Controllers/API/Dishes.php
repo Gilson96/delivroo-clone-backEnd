@@ -11,19 +11,6 @@ use Illuminate\Http\Request;
 
 class Dishes extends Controller
 {
-    public function index(Restaurant $restaurant)
-    {
-        $dishes = $restaurant->dishes;
-        return DishResource::all($dishes);
-    }
-
-    public function store(DishRequest $request, Restaurant $restaurant)
-    {        
-        $dish = new dish($request->all());
-        $restaurant->dishes()->save($dish);
-
-        return new DishResource($dish);
-    }
 
     public function show(Dish $dish)
     {
