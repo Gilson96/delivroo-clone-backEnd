@@ -71,31 +71,37 @@ class Restaurants extends Controller
         return response(null, 204);
     }
 
-    public function dishShow()
+    public function dishShow(Dish $dish)
     {
-        return DishResource::collection(Dish::all());
+        return DishResource::all();
     }
 
+    public function dishStore(DishRequest $request, Restaurant $restaurant)
+    {        
+        $dish = new Dish($request->all());
 
-    public function dishPost(DishRequest $request, Restaurant $restaurant)
+        $restaurant->dishes()->save($dish);
+
+
+        return new DishResource($dish);
+    }
+
+    public function dishPost(DishRequest $request, Dish $dish)
     {
         
-        $dish = new Dish($request->all());
+        $data = $request->all();
         
-        $restaurant->dishes()->save($dish);
+        $dish->update($data);
         // return the stored comment
 
-        return redirect("/restaurant/{$restaurant->id}");
+        return new DishResource($dish);
     }
 
-    public function dishDestroy(Restaurant $restaurant)
+    public function dishDestroy(Dish $dish)
     {
         
-        $dish = $restaurant->dishes();
-        
         $dish->delete();
-
-        return redirect("/restaurant/{$restaurant->id}");
+        return response(null, 204);
     }
 
 }

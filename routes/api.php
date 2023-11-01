@@ -37,6 +37,7 @@ Route::group(["prefix" => "restaurants"], function () {
 
 Route::group(["prefix" => "dishes"], function () {
     Route::get('{restaurant}', "App\Http\Controllers\Restaurants@dishShow");
+    Route::get('{restaurant}', "App\Http\Controllers\Restaurants@dishStore");
     Route::post('{restaurant}', "App\Http\Controllers\Restaurants@dishPost");
     Route::get('/destroy/{restaurant}', "App\Http\Controllers\Restaurants@dishDestroy");
 });
