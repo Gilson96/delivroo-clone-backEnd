@@ -29,7 +29,7 @@ Route::group(["prefix" => "restaurants"], function () {
         // GET /Restaurants/8: show the article
         Route::get("", [Restaurants::class, "show"]);
         // PUT /Restaurants/8: update the article
-        Route::put("", [Restaurants::class, "update"])->whereUlid("restaurant");
+        Route::put("", [Restaurants::class, "update"]);
         // DELETE /Restaurants/8: delete the article
         Route::delete("", [Restaurants::class, "destroy"]);
     });
