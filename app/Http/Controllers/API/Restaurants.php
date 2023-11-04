@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\DishResource;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
-use App\Models\Dishes;
+use App\Models\Dish;
 use App\Http\Requests\DishRequest;
 use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantResource;
@@ -18,7 +19,7 @@ class Restaurants extends Controller
     }
 
     
-    public function store(RestaurantRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
@@ -46,17 +47,22 @@ class Restaurants extends Controller
         return response(null, 204);
     }
 
+    public function dishShow()
+    {        
+        return DishResource::all();
+    }
+
    
 
     public function dishPost(Request $request, Restaurant $restaurant)
     {
         
-        $dish = new Dishes($request->all());
+        $dish = new Dish($request->all());
         
         $restaurant->dishes()->save($dish);
         // return the stored comment
 
-        return redirect("/restaurant/{$restaurant->id}");
+        return new DishResource($dish);
     }
 
     public function dishDestroy(Restaurant $restaurant)

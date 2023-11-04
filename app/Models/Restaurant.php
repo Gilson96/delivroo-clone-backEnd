@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Dish;
 class Restaurant extends Model
 {
     protected $fillable = 
@@ -15,7 +15,7 @@ class Restaurant extends Model
         "address",
         "description",
         "longtitude",
-        "latitude"
+        "latitude",
     ];
 
     public function dishes()

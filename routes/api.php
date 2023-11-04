@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Restaurants;
 use App\Http\Controllers\API\Restaurants\Dishes as RestaurantDishes;
 use App\Http\Controllers\API\Dishes;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +19,10 @@ use App\Http\Controllers\API\Dishes;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/test/env', function () {
+    dd(env('DB_DATABASE')); // Dump 'db' variable value one by one
 });
 
 Route::group(["prefix" => "restaurants"], function () {
@@ -34,20 +39,15 @@ Route::group(["prefix" => "restaurants"], function () {
         Route::put("", [Restaurants::class, "update"]);
         // DELETE /Restaurants/8: delete the article
         Route::delete("", [Restaurants::class, "destroy"]);
-        Route::group(["prefix" => "dishes"], function(){
-            Route::get("", [RestaurantDishes::class, "index"]);
-            Route::post("", [RestaurantDishes::class, "store"]);  
-        });
     });
-   
-});
+    Route::group(["prefix" => "dishes"], function () {
 
-Route::group(["prefix" => "dishes"], function(){
-    Route::get("", [Dishes::class, "index"]);
-    Route::group(["prefix" => "{dish}"], function(){
-        Route::get("", [Dishes::class, "show"]);
-        Route::get("", [Dishes::class,"store"]);
-        Route::put("", [Dishes::class, "update"]);
-        Route::delete("", [Dishes::class, "destroy"]);       
+        Route::get("{restaurant}", "App\Http\Controllers\API\Restaurants@dishShow");
+        Route::post("{restaurant}", "App\Http\Controllers\API\Restaurants@dishPost");
+        Route::delete("{restaurant}", "App\Http\Controllers\API\Restaurants@dishDestroy");
+    
     });
+    
+   
+
 });
