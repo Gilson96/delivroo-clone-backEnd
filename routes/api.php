@@ -38,12 +38,13 @@ Route::group(["prefix" => "restaurants"], function () {
 
         Route::group(["prefix" => "dishes"], function () {
             Route::get("", [RestaurantDishes::class, "index"]);
-            Route::post("", [RestaurantDishes::class, "store"]);
+            Route::post("", [RestaurantDishes::class, "store"]);          
             Route::group(["prefix" => "{dish}"], function () {
                 Route::put("", [RestaurantDishes::class, "update"]);
                 Route::delete("", [RestaurantDishes::class, "destroy"]);
-            });
+            });  
         });
     });
-
 });
+
+
