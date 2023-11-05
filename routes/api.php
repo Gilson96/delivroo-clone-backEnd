@@ -21,10 +21,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test/env', function () {
-    dd(env('DB_DATABASE')); // Dump 'db' variable value one by one
-});
-
 Route::group(["prefix" => "restaurants"], function () {
     // GET /restaurants: show all articles
     Route::get("", [Restaurants::class, "index"]);
