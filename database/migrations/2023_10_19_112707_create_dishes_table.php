@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('description', 100);
-            $table->decimal('price', 10,2);
-            $table->string('src', 100);
+            $table->decimal('price', 3,2);
+            $table->text('src');
             $table->timestamps();
             $table->foreignId("restaurant_id")->unsigned();
             $table->foreign('restaurant_id')->references("id")->on("restaurants")->onDelete("cascade");

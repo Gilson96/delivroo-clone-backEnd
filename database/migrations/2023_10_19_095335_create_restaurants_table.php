@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('title',100);
-            $table->string('src',100);
-            $table->decimal('rating', 5,3);
-            $table->string('address',100);
+            $table->text('src');
+            $table->decimal('rating', 3,2);
+            $table->text('address');
             $table->string('description',100);
-            $table->decimal('latitude', 30, 20);
-            $table->decimal('longtitude', 30, 20);
+            $table->decimal('latitude', 20, 20);
+            $table->decimal('longtitude', 20, 20);
             $table->timestamps();
 
         });
