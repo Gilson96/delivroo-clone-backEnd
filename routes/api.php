@@ -35,19 +35,15 @@ Route::group(["prefix" => "restaurants"], function () {
         Route::put("", [Restaurants::class, "update"]);
         // DELETE /Restaurants/8: delete the article
         Route::delete("", [Restaurants::class, "destroy"]);
-        Route::group(["prefix" => "dishes"], function(){
+
+        Route::group(["prefix" => "dishes"], function () {
             Route::get("", [RestaurantDishes::class, "index"]);
-            Route::post("", [RestaurantDishes::class, "store"]);  
+            Route::post("", [RestaurantDishes::class, "store"]);
+            Route::group(["prefix" => "{dish}"], function () {
+                Route::put("", [Dishes::class, "update"]);
+                Route::delete("", [Dishes::class, "destroy"]);
+            });
         });
     });
 
-    
-    
 });
-// Route::group(["prefix" => "dishes"], function(){
-//     Route::get("", [Dishes::class, "index"]);
-//     Route::group(["prefix" => "{dish}"], function(){
-//         Route::put("", [Dishes::class, "update"]);
-//         Route::delete("", [Dishes::class, "destroy"]);       
-//     });
-// });
