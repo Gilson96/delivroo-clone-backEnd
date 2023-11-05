@@ -39,7 +39,12 @@ Route::group(["prefix" => "restaurants"], function () {
         Route::put("", [Restaurants::class, "update"]);
         // DELETE /Restaurants/8: delete the article
         Route::delete("", [Restaurants::class, "destroy"]);
+        Route::group(["prefix" => "dishes"], function(){
+            Route::get("", [RestaurantDishes::class, "index"]);
+            Route::post("", [RestaurantDishes::class, "store"]);  
+        });
     });
+
     Route::group(["prefix" => "dishes"], function () {
 
         Route::get("{restaurant}", "App\Http\Controllers\API\Restaurants@dishShow");
