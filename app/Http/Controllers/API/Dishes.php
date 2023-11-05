@@ -12,9 +12,10 @@ use Illuminate\Http\Request;
 class Dishes extends Controller
 {
 
-    public function show(Dish $dish)
+    public function index()
     {
-        return new DishResource($dish);
+        return Dish::all();
+    
     }
 
     public function update(DishRequest $request, Dish $dish){
@@ -22,7 +23,7 @@ class Dishes extends Controller
         $data = $request->all();
         $dish->update($data);
 
-        return new dishResource($dish);
+        return $dish;
     }
 
     public function destroy(Dish $dish)

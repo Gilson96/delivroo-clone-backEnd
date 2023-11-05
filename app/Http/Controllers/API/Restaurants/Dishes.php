@@ -13,8 +13,8 @@ class Dishes extends Controller
 {
     public function index(Restaurant $restaurant)
     {
-        
-        return Dish::all();
+        $dish = $restaurant->dishes;
+        return Dish::all($dish);
     }
 
     public function store(DishRequest $request, Restaurant $restaurant)

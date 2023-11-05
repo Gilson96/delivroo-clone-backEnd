@@ -45,14 +45,12 @@ Route::group(["prefix" => "restaurants"], function () {
         });
     });
 
-    Route::group(["prefix" => "dishes"], function () {
-
-        Route::get("{restaurant}", "App\Http\Controllers\API\Restaurants@dishShow");
-        Route::post("{restaurant}", "App\Http\Controllers\API\Restaurants@dishPost");
-        Route::delete("{restaurant}", "App\Http\Controllers\API\Restaurants@dishDestroy");
-    
+    Route::group(["prefix" => "dishes"], function(){
+        Route::get("", [Dishes::class, "index"]);
+        Route::group(["prefix" => "{dish}"], function(){
+            Route::put("", [Dishes::class, "update"]);
+            Route::delete("", [Dishes::class, "destroy"]);       
+        });
     });
     
-   
-
 });
