@@ -49,7 +49,7 @@ class Restaurants extends Controller
 
     public function dishShow()
     {        
-        return DishResource::all();
+        return Dish::all();
     }
 
    
