@@ -14,7 +14,7 @@ class Dishes extends Controller
     public function index(Restaurant $restaurant)
     {
         $dish = $restaurant->dishes;
-        return Dish::all($dish);
+        return DishResource::collection($dish);
     }
 
     public function store(DishRequest $request, Restaurant $restaurant)
