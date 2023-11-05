@@ -24,4 +24,11 @@ class Dishes extends Controller
 
         return new DishResource($dish);
     }
+
+    public function destroy(Dish $dish)
+    {
+        $dish->delete();
+        return response(null, 204);
+    }
+
 }
