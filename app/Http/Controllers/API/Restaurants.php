@@ -15,7 +15,7 @@ class Restaurants extends Controller
 {
     public function index()
     {
-        return Restaurant::all();
+        return response()->json([Restaurant::all()]);
     }
 
     
