@@ -46,33 +46,4 @@ class Restaurants extends Controller
         $restaurant->delete();
         return response(null, 204);
     }
-
-    public function dishShow()
-    {        
-        return Dish::all();
-    }
-
-   
-
-    public function dishPost(Request $request, Restaurant $restaurant)
-    {
-        
-        $dish = new Dish($request->all());
-        
-        $restaurant->dishes()->save($dish);
-        // return the stored comment
-
-        return new DishResource($dish);
-    }
-
-    public function dishDestroy(Restaurant $restaurant)
-    {
-        
-        $dish = $restaurant->dishes();
-        
-        $dish->delete();
-
-        return redirect("/restaurant/{$restaurant->id}");
-    }
-
 }
