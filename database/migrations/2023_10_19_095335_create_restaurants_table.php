@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('rating', 3,2);
             $table->string('address', 200);
             $table->string('description',100);
-            $table->decimal('latitude', 20, 20);
-            $table->decimal('longtitude', 20, 20);
+            $table->decimal('latitude', 22, 20);
+            $table->decimal('longtitude', 22, 20);
             $table->timestamps();
 
         });
