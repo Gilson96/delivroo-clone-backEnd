@@ -10,6 +10,7 @@ use App\Models\Dish;
 use App\Http\Requests\DishRequest;
 use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantResource;
+use Lanin\Laravel\ApiDebugger\Debugger;
 
 class Restaurants extends Controller
 {
@@ -24,8 +25,8 @@ class Restaurants extends Controller
         $data = $request->all();
 
         $restaurant = Restaurant::create($data);
-
-        return new RestaurantResource($restaurant);
+        
+        return  response()->json([($restaurant)]);
     }
 
     public function show(Restaurant $restaurant)
