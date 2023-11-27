@@ -38,7 +38,8 @@ Route::group(["prefix" => "restaurants"], function () {
 
         Route::group(["prefix" => "dishes"], function () {
             Route::get("", [RestaurantDishes::class, "index"]);
-            Route::post("", [RestaurantDishes::class, "store"]);          
+            Route::post("", [RestaurantDishes::class, "store"]);
+            Route::put("", [Dishes::class, "update"]);
         });
     });
 });
@@ -46,7 +47,7 @@ Route::group(["prefix" => "restaurants"], function () {
 Route::group(["prefix" => "dishes"], function () {
     Route::get("", [Dishes::class, "index"]);     
     Route::group(["prefix" => "{dish}"], function () {
-        Route::put("", [Dishes::class, "update"]);
+        
         Route::delete("", [Dishes::class, "destroy"]);
     });  
 });
