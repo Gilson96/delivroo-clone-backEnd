@@ -16,7 +16,7 @@ class RestaurantRequest extends FormRequest
     {
         return [
             "title" => ["required", "string", "max:100"],
-            "src" => ["required", "string", "max:100"],
+            "src" => ["required", "string", "max:500"],
             "rating" => ["required", "decimal:1,1"],
             "address" => ["required", "string", "max:100"],
             "description" => ["required", "string", "max:100"],
