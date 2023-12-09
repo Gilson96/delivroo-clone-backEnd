@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'https://gilson96.github.io/delivroo-clone-frontEnd/
+    'allowed_origins' => [env('FRONTEND_URL', 'https://gilson96.github.io
     ')],
 
     'allowed_origins_patterns' => [],
