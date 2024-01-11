@@ -19,7 +19,8 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'https://gilson96.github.io/delivoo_clone-FrontEnd')],
+    'allowed_origins' => [env('FRONTEND_URL', 'https://gilson96.github.io
+    ')],
 
     'allowed_origins_patterns' => [],
 
